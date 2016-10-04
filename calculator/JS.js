@@ -42,7 +42,7 @@
   }
 
   function safeEval(str) {
-    return eval(str);
+    return eval((str).replace(/[xX]/, "*"));
   }
 
 })();
