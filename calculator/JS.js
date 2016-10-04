@@ -8,8 +8,19 @@
 
   function handleCalculatorClick(event) {
 
-    var type = event.target.getAttribute("data-type");  //catch button element
-    input.value += type;
+    var type = event.target.getAttribute("data-type") || "";  //catch button element
+    var isTypeWithoutSpace = !! type.match(/[\d\.]/);  //is number or sign
+
+    if ("" === type) {
+      return;
+    }
+
+    if("ce" === type) {
+      input.value = input.value.slice(0, -1);
+      return;
+    }
+
+    input.value += isTypeWithoutSpace ? type : (" " + type + " ") ;
 
   }
 
