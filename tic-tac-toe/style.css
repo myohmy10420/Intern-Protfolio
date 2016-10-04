@@ -1,0 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 20px 0;
+}
+
+.wrapper {
+    width: 400px;
+    margin: 0 auto;
+    padding: 40px 0;
+    background-color: #f5f5f5;
+}
+
+.player-board {
+    margin: 0 auto;
+    width: 70%;
+}
+
+.player-board .player {
+    padding: 10px 16px;
+    background-color: #ffffff;
+    display: inline-block;
+    width: 46%;
+    white-space: nowrap;
+    border-bottom: 4px solid #bbbbbb;
+}
