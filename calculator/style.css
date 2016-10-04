@@ -11,3 +11,12 @@
     padding: 20px 18px 18px;
     width: 320px;
 }
+
+.calculator .input {
+    height:30px;
+    width:98%;
+    margin: 0 1% 2%;
+    padding:0 10px;
+    border: 1px solid #dedede;
+    text-align: right;
+}
