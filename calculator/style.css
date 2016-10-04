@@ -20,3 +20,31 @@
     border: 1px solid #dedede;
     text-align: right;
 }
+
+.calculator .row{
+    clear: both; /* fix float */
+    white-space: nowrap; /*don't change row */
+}
+
+.calculator .button {
+    width: 22%;
+    margin: 1.2% 1%;
+    border: 1px solid #dedede;
+    background-color: #f5f5f5;
+    cursor: pointer;
+}
+
+.calculator .button:hover {     /*when pointing */
+    background-color: #f8f8f8;
+    border: 1px solid #c6c6c6;
+}
+
+.calculator .button.ac {
+  background-color: #d6d6d6;
+  border: 1px solid #c6c6c6;
+}
+
+.calculator .button.ac:hover {
+  background-color: #d9d9d9;
+  border: 1px solid #b6b6b6;
+}
