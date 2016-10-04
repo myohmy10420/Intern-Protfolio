@@ -11,6 +11,11 @@
     var type = event.target.getAttribute("data-type") || "";  //catch button element
     var isTypeWithoutSpace = !! type.match(/[\d\.]/);  //is number or sign
 
+    if (isShowingResult) {
+      input.value = "";
+      isShowingResult = false;
+    }
+
     if ("" === type) {
       return;
     }
@@ -20,8 +25,24 @@
       return;
     }
 
+    if ("=" ===type) {
+      try {
+        input.value = safeEval(input.value);
+      }
+      catch(err) {
+        console.log("safeEval failed", err);
+        input.value = "error";
+      }
+      isShowingResult = true;
+      return;
+    }
+
     input.value += isTypeWithoutSpace ? type : (" " + type + " ") ;
 
+  }
+
+  function safeEval(str) {
+    return eval(str);
   }
 
 })();
