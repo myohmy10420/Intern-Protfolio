@@ -18,14 +18,15 @@ function nextMove (square) {
 }
 
 function switchTurn () {
-  if(checkForWinner(document.turn)) {
+  if (checkForWinner(document.turn)) {
     setMessage("Congratulations, " + document.turn + "! You win!");
   } else if (document.turn == "X") {
     document.turn = "O";
+    setMessage("It's " + document.turn + "'s move.");
   } else {
     document.turn = "X";
+    setMessage("It's " + document.turn + "'s move.");
   }
-  setMessage("It's " + document.turn + "'s move.");
 }
 
 function getBox(number) {
