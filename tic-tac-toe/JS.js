@@ -1,4 +1,7 @@
 function startGame () {
+  for (var i = 1; i <= 9; i = i +1) {
+    clearBox(i);
+  }
   document.turn = "X";
   if (Math.random () < 0.5) {
     document.turn = "O";
@@ -60,4 +63,8 @@ function checkForWinner(move) {
     result = true;
   }
   return result;
+}
+
+function clearBox (number) {
+  document.getElementById("s" + number).innerText = "";
 }
