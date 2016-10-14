@@ -19,4 +19,5 @@ function switchTurn () {
   } else {
     document.turn = "X";
   }
+  setMessage("It's " + document.turn + "'s move.");
 }
