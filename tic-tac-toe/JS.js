@@ -9,8 +9,12 @@ function setMessage (msg) {
 }
 
 function nextMove (square) {
-  square.innerText = document.turn;
-  switchTurn();
+  if (square.innerText == "") {
+    square.innerText = document.turn;
+    switchTurn();
+  } else {
+    setMessage ("This square has already used.")
+  }
 }
 
 function switchTurn () {
