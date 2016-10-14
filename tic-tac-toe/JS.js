@@ -7,3 +7,7 @@ function startGame () {
 function setMessage (msg) {
   document.getElementById("message").innerText = msg;
 }
+
+function nextMove (square) {
+  square.innerText = document.turn;
+}
