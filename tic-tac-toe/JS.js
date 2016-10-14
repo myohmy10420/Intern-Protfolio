@@ -1,6 +1,6 @@
 function startGame () {
   document.turn = "X";
-
+  document.winner = null;
   setMessage(document.turn + " gets to start now.");
 }
 
@@ -9,7 +9,9 @@ function setMessage (msg) {
 }
 
 function nextMove (square) {
-  if (square.innerText == "") {
+  if (document.winner != null ) {
+    setMessage(document.winner + " already won the game.")
+  } else if (square.innerText == "") {
     square.innerText = document.turn;
     switchTurn();
   } else {
@@ -20,6 +22,7 @@ function nextMove (square) {
 function switchTurn () {
   if (checkForWinner(document.turn)) {
     setMessage("Congratulations, " + document.turn + "! You win!");
+    document.winner = document.turn;
   } else if (document.turn == "X") {
     document.turn = "O";
     setMessage("It's " + document.turn + "'s move.");
