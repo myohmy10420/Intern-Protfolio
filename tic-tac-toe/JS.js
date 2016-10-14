@@ -18,7 +18,9 @@ function nextMove (square) {
 }
 
 function switchTurn () {
-  if (document.turn == "X") {
+  if(checkForWinner(document.turn)) {
+    setMessage("Congratulations, " + document.turn + "! You win!");
+  } else if (document.turn == "X") {
     document.turn = "O";
   } else {
     document.turn = "X";
@@ -47,8 +49,7 @@ function checkForWinner(move) {
       checkRow(2, 5, 8, move) ||
       checkRow(3, 6, 9, move) ||
       checkRow(1, 5, 9, move) ||
-      checkRow(3, 5, 7, move) ||
-     ) {
+      checkRow(3, 5, 7, move)) {
     result = true;
   }
   return result;
