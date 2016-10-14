@@ -1,5 +1,8 @@
 function startGame () {
   document.turn = "X";
+  if (Math.random () < 0.5) {
+    document.turn = "O";
+  }
   document.winner = null;
   setMessage(document.turn + " gets to start now.");
 }
