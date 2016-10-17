@@ -71,7 +71,7 @@ function handleControls () {
 	if (controller.right) {
 		hero.x += HERO_MOVEMENT;
 	}
-	if (controller.space) {
+	if (controller.space  && laser.y <= -120) {
 		laser.x = hero.x + 9;
 		laser.y = hero.y - laser.h;
 	}
