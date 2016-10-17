@@ -93,6 +93,7 @@ function updatePosition () {
 	for (var i = 0; i < enemies.length; i++) {
 		enemies[i].y += 4;
 		enemies[i].x += getRandom(7) - 3;
+		ensureBounds(enemies[i]);
 	}
 	laser.y -= 12;
 }
