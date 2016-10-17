@@ -83,9 +83,17 @@ function handleControls () {
 function showSprites () {
 	setPosition(hero);
 	setPosition(laser);
+
+	for (var i = 0; i < enemies.length; i++) {
+		setPosition(enemies[i]);
+	}
 }
 
 function updatePosition () {
+	for (var i = 0; i < enemies.length; i++) {
+		enemies[i].y += 4;
+		enemies[i].x += getRandom(7) - 3;
+	}
 	laser.y -= 12;
 }
 
