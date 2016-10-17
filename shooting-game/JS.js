@@ -10,6 +10,8 @@ var hero = new Object();
 hero.element = 'hero';
 hero.x = 250;
 hero.y = 460;
+hero.h = 20;
+hero.w = 20;
 
 var controller = new Object();
 
@@ -25,6 +27,21 @@ function toggleKey(keyCode, isPressed) {
 	}
 	if (keyCode == DOWN_KEY) {
 		controller.down = isPressed;
+	}
+}
+
+function ensureBounds (sprite) {
+	if (sprite.x < 20) {
+		sprite.x = 20;
+	}
+	if (sprite.y < 20) {
+		sprite.y = 20;
+	}
+	if (sprite.x + sprite.w > 480) {
+		sprite.x = 480 - sprite.w;
+	}
+	if (sprite.y +sprite.h > 480) {
+		sprite.y = 480 - sprite.h;
 	}
 }
 
@@ -47,6 +64,7 @@ function handleControls () {
 	if (controller.right) {
 		hero.x += HERO_MOVEMENT;
 	}
+	ensureBounds (hero);
 }
 
 function showSprites () {
