@@ -32,6 +32,9 @@ function toggleKey(keyCode, isPressed) {
 	if (keyCode == DOWN_KEY) {
 		controller.down = isPressed;
 	}
+	if (keyCode == SPACE_KEY) {
+		controller.space = isPressed;
+	}
 }
 
 function ensureBounds (sprite) {
@@ -68,6 +71,11 @@ function handleControls () {
 	if (controller.right) {
 		hero.x += HERO_MOVEMENT;
 	}
+	if (controller.space) {
+		laser.x = hero.x + 9;
+		laser.y = hero.y - laser.h;
+	}
+
 	ensureBounds (hero);
 }
 
