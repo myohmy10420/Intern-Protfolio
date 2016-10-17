@@ -8,6 +8,7 @@ var HERO_MOVEMENT = 3;
 var lastLoopRun = 0;
 
 var controller = new Object();
+var enemies = new Array();
 
 function creatSprite (element, x, y, w, h) {
 	var result = new Object();
@@ -88,10 +89,31 @@ function updatePosition () {
 	laser.y -= 12;
 }
 
+function addEnemy () {
+	if (getRandom(50) == 0) {
+		var elementName = 'enemy' + getRandom(10000000);
+		var enemy = creatSprite(elementName, getRandom(450), -40, 35, 35);
+
+		var element = document.createElement('div');
+		element.id = enemy.element;
+		element.className = 'enemy';
+		document.children[0].appendChild(element);
+
+		enemies[enemies.length] = enemy;
+	}
+}
+
+function getRandom (maxSize) {
+	return parseInt(Math.random() * maxSize);
+}
+
 function loop () {
 	if (new Date().getTime() - lastLoopRun > 40) {
 		updatePosition();
 		handleControls();
+
+		addEnemy();
+
   		showSprites();
 
 		lastLoopRun = new Date().getTime();
