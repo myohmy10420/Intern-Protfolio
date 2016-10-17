@@ -2,7 +2,7 @@ var LEFT_KEY = 37;
 var UP_KEY = 38;
 var RIGHT_KEY = 39;
 var DOWN_KEY = 40;
-var HERO_MOVEMENT = 5;
+var HERO_MOVEMENT = 3;
 
 var lastLoopRun = 0;
 
