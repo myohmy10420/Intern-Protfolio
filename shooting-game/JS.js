@@ -2,6 +2,9 @@ var LEFT_KEY = 37;
 var UP_KEY = 38;
 var RIGHT_KEY = 39;
 var DOWN_KEY = 40;
+var HERO_MOVEMENT = 5;
+
+var lastLoopRun = 0;
 
 var hero = new Object();
 hero.element = 'hero';
@@ -15,13 +18,13 @@ function toggleKey(keyCode, isPressed) {
 		controller.left = isPressed;
 	}
 	if (keyCode == UP_KEY) {
-		controller.left = isPressed;
+		controller.up = isPressed;
 	}
 	if (keyCode == RIGHT_KEY) {
-		controller.left = isPressed;
+		controller.right = isPressed;
 	}
 	if (keyCode == DOWN_KEY) {
-		controller.left = isPressed;
+		controller.down = isPressed;
 	}
 }
 
@@ -31,12 +34,41 @@ function setPosition(sprite) {
 	e.style.top = sprite.y + 'px';
 }
 
+function handleControls () {
+	if (controller.up){
+		hero.y -= HERO_MOVEMENT;
+	}
+	if (controller.down) {
+		hero.y += HERO_MOVEMENT;
+	}
+	if (controller.left) {
+		hero.x -= HERO_MOVEMENT;
+	}
+	if (controller.right) {
+		hero.x += HERO_MOVEMENT;
+	}
+}
+
+function showSprites () {
+	setPosition(hero);
+}
+
+function loop () {
+	if (new Date().getTime() - lastLoopRun > 40) {
+		handleControls();
+  		showSprites();
+
+		lastLoopRun = new Date().getTime();
+	}
+	setTimeout('loop();', 2);
+}
+
 document.onkeydown = function (evt) {
 	toggleKey(evt.keyCode, true);
 };
 
 document.onkeyup = function (evt) {
-	toggleKey(evt.keyCode, true);
+	toggleKey(evt.keyCode, false);
 };
 
-setPosition(hero);
+loop();
