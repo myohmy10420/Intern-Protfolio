@@ -84,8 +84,13 @@ function showSprites () {
 	setPosition(laser);
 }
 
+function updatePosition () {
+	laser.y -= 12;
+}
+
 function loop () {
 	if (new Date().getTime() - lastLoopRun > 40) {
+		updatePosition();
 		handleControls();
   		showSprites();
 
