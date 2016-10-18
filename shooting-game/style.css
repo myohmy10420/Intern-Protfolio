@@ -31,4 +31,7 @@
 #score {
 	color: #ffffff;
 	font-size: 18pt;
+	position: absolute;
+	left: 20px;
+	top: 20px;
 }

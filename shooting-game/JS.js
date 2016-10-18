@@ -6,6 +6,7 @@ var SPACE_KEY = 32;
 var HERO_MOVEMENT = 3;
 
 var lastLoopRun = 0;
+var score = 0;
 
 var controller = new Object();
 var enemies = new Array();
@@ -93,6 +94,7 @@ function checkCollisions () {
 			enemies.splice(i, 1);
 			i--;
 			laser.y = -laser.h;
+			score += 100;
 		} else if (intersects(hero, enemies[i])) {
 			var element = document.getElementById(hero.element);
 			element.style.visibility = 'hidden';
@@ -113,6 +115,9 @@ function showSprites () {
 	for (var i = 0; i < enemies.length; i++) {
 		setPosition(enemies[i]);
 	}
+
+	var scoreElement = document.getElementById('score');
+	scoreElement.innerHTML = 'SCORE: ' + score ;
 }
 
 function updatePosition () {
