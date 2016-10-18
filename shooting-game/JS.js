@@ -93,6 +93,9 @@ function checkCollisions () {
 			enemies.splice(i, 1);
 			i--;
 			laser.y = -laser.h;
+		} else if (intersects(hero, enemies[i])) {
+			var element = document.getElementById(hero.element);
+			element.style.visibility = 'hidden';
 		} else if (enemies[i].y + enemies[i].h >= 500) {
 			var element = document.getElementById(enemies[i].element);
 			element.style.visibility = 'hidden';
