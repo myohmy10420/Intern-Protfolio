@@ -110,6 +110,8 @@ function checkCollisions () {
 function gameOver () {
 	var element = document.getElementById(hero.element);
 	element.style.visibility = 'hidden';
+	element = document.getElementById('gameover');
+	element.style.visibility = 'visible';
 }
 
 function showSprites () {
