@@ -3,7 +3,7 @@ var UP_KEY = 38;
 var RIGHT_KEY = 39;
 var DOWN_KEY = 40;
 var SPACE_KEY = 32;
-var HERO_MOVEMENT = 3;
+var HERO_MOVEMENT = 10;
 
 var lastLoopRun = 0;
 var score = 0;
