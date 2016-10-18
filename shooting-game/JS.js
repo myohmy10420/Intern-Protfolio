@@ -96,8 +96,7 @@ function checkCollisions () {
 			laser.y = -laser.h;
 			score += 100;
 		} else if (intersects(hero, enemies[i])) {
-			var element = document.getElementById(hero.element);
-			element.style.visibility = 'hidden';
+			gameOver();
 		} else if (enemies[i].y + enemies[i].h >= 500) {
 			var element = document.getElementById(enemies[i].element);
 			element.style.visibility = 'hidden';
@@ -106,6 +105,11 @@ function checkCollisions () {
 			i--;
 		}
 	}
+}
+
+function gameOver () {
+	var element = document.getElementById(hero.element);
+	element.style.visibility = 'hidden';
 }
 
 function showSprites () {
