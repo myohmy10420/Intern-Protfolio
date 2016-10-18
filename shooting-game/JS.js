@@ -87,6 +87,9 @@ function handleControls () {
 function checkCollisions () {
 	for (var i = 0; i < enemies.length; i++) {
 		if (intersects(laser, enemies[i])) {
+			var element = document.getElementById(enemies[i].element);
+			element.style.visibility = 'hidden';
+			element.parentNode.removeChild(element);
 			enemies.splice(i, 1);
 			i--;
 		}
