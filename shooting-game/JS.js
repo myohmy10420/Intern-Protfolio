@@ -92,6 +92,7 @@ function checkCollisions () {
 			element.parentNode.removeChild(element);
 			enemies.splice(i, 1);
 			i--;
+			laser.y = -laser.h;
 		}
 	}
 }
