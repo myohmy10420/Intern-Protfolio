@@ -10,6 +10,7 @@ var score = 0;
 
 var controller = new Object();
 var enemies = new Array();
+var iterations = 0;
 
 function creatSprite (element, x, y, w, h) {
 	var result = new Object();
@@ -136,7 +137,16 @@ function updatePosition () {
 }
 
 function addEnemy () {
-	if (getRandom(50) == 0) {
+	var interval = 50;
+	if (iterations > 1500){
+		interval = 5;
+	} else if (iterations > 1000) {
+		interval = 20;
+	} else if (iterations > 500) {
+		interval = 35;
+	}
+
+	if (getRandom(interval) == 0) {
 		var elementName = 'enemy' + getRandom(10000000);
 		var enemy = creatSprite(elementName, getRandom(450), -40, 35, 35);
 
@@ -164,6 +174,7 @@ function loop () {
   		showSprites();
 
 		lastLoopRun = new Date().getTime();
+		iterations++;
 	}
 	setTimeout('loop();', 2);
 }
