@@ -38,17 +38,21 @@ function toggleKey(keyCode, isPressed) {
 	}
 }
 
-function ensureBounds (sprite) {
+function intersects (a, b) {
+	return a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y ;
+}
+
+function ensureBounds (sprite, ignoreY) {
 	if (sprite.x < 20) {
 		sprite.x = 20;
 	}
-	if (sprite.y < 20) {
+	if (!ignoreY && sprite.y < 20) {
 		sprite.y = 20;
 	}
 	if (sprite.x + sprite.w > 480) {
 		sprite.x = 480 - sprite.w;
 	}
-	if (sprite.y +sprite.h > 480) {
+	if (!ignoreY && sprite.y +sprite.h > 480) {
 		sprite.y = 480 - sprite.h;
 	}
 }
@@ -80,6 +84,15 @@ function handleControls () {
 	ensureBounds (hero);
 }
 
+function checkCollisions () {
+	for (var i = 0; i < enemies.length; i++) {
+		if (intersects(laser, enemies[i])) {
+			enemies.splice(i, 1);
+			i--;
+		}
+	}
+}
+
 function showSprites () {
 	setPosition(hero);
 	setPosition(laser);
@@ -93,7 +106,7 @@ function updatePosition () {
 	for (var i = 0; i < enemies.length; i++) {
 		enemies[i].y += 4;
 		enemies[i].x += getRandom(7) - 3;
-		ensureBounds(enemies[i]);
+		ensureBounds(enemies[i], true);
 	}
 	laser.y -= 12;
 }
@@ -120,6 +133,7 @@ function loop () {
 	if (new Date().getTime() - lastLoopRun > 40) {
 		updatePosition();
 		handleControls();
+		checkCollisions();
 
 		addEnemy();
 
